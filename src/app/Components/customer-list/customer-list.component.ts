@@ -28,13 +28,13 @@ export class CustomerListComponent implements OnInit {
     this.dataService.getTransactions().subscribe(data => {
       this.transactions = data;
       this.filteredTransactions = this.transactions;
-      this.transactionsChange.emit(this.filteredTransactions); // Emit all transactions initially
+      this.transactionsChange.emit(this.filteredTransactions); 
     });
   }
 
   filterTransactions(customerId: number): void {
     if (customerId === 0) {
-      // "All" selected
+      
       this.selectedCustomer = null;
       this.filteredTransactions = this.transactions;
     } else {
