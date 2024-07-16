@@ -1,1 +1,24 @@
-<p>customer-list works!</p>
+<div class="container mt-4">
+  <h2 class="text-center m-3 bg-success-subtle p-3 w-25 m-auto rounded-4">Customer List</h2>
+  <table class="table table-bordered table-striped table-hover mt-3">
+    <thead class="text-center">
+      <tr>
+        <th>Customer ID</th>
+        <th>Customer Name</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let customer of customers" (click)="selectCustomer(customer.id)">
+        <td>{{ customer?.id }}</td>
+        <td>{{ customer?.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <label for="customerSelect" class="fs-4 fw-bold text-success">Filter by Customer: </label>
+    <select id="customerSelect" #customerSelect (change)="filterTransactions(+customerSelect.value)" class="form-select">
+      <option value="0">All</option>
+      <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</option>
+    </select>
+  </div>
+</div>
